@@ -15,7 +15,7 @@ abstract class AppRouter {
         return _fadeRoute(const SplashPage(), splashRoute);
 
       default:
-        return _fadeRoute(const HomePage(), homeRoute);
+        return _fadeRoute(HomePage(), homeRoute);
     }
   }
 

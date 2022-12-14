@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'src/common/palette.dart';
 import 'src/utils/router.dart';
@@ -14,17 +13,12 @@ abstract class View {
   // Theme
   static ThemeData get theme => ThemeData(
         primaryColor: Palette.primaryColor,
+        dividerColor: Palette.dividerColor,
         scaffoldBackgroundColor: Palette.white,
-        appBarTheme: AppBarTheme(
-          titleTextStyle: TextStyle(
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w500,
-            color: Palette.textColor,
-          ),
-          centerTitle: true,
-          color: Palette.white,
-          elevation: .0,
-          iconTheme: IconThemeData(color: Palette.textColor),
+        expansionTileTheme: ExpansionTileThemeData(
+          tilePadding: const EdgeInsets.fromLTRB(24.0, 4.0, 30.0, 4.0),
+          iconColor: Palette.iconColor,
+          collapsedIconColor: Palette.iconColor,
         ),
       );
 }
