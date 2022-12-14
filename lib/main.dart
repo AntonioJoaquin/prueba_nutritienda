@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, __) => MaterialApp(
         title: 'Material App',
+        theme: View.theme,
         navigatorKey: _navigatorKey,
         onGenerateRoute: View.getRoutes,
         initialRoute: View.getInitialRoute(),

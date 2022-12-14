@@ -1,5 +1,7 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'src/common/palette.dart';
 import 'src/utils/router.dart';
 
 abstract class View {
@@ -8,4 +10,21 @@ abstract class View {
       AppRouter.generateRoute(settings);
 
   static String getInitialRoute() => AppRouter.homeRoute;
+
+  // Theme
+  static ThemeData get theme => ThemeData(
+        primaryColor: Palette.primaryColor,
+        scaffoldBackgroundColor: Palette.white,
+        appBarTheme: AppBarTheme(
+          titleTextStyle: TextStyle(
+            fontSize: 18.sp,
+            fontWeight: FontWeight.w500,
+            color: Palette.textColor,
+          ),
+          centerTitle: true,
+          color: Palette.white,
+          elevation: .0,
+          iconTheme: IconThemeData(color: Palette.textColor),
+        ),
+      );
 }
