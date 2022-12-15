@@ -6,6 +6,7 @@ import '../../../../di/locator.dart';
 import '../../common/palette.dart';
 import 'filter_option.dart';
 import 'home_manager.dart';
+import 'rates/rate_filter_list.dart';
 import 'sales/sale_filter_list.dart';
 import 'widgets/filter_option_tile.dart';
 
@@ -56,8 +57,8 @@ class _HomePageState extends State<HomePage> {
         ),
         FilterOption(
           'Rating',
-          _manager.totalSaleItemsSelected,
-          const SizedBox.shrink(),
+          _manager.totalRateItemsSelected,
+          RateFilterList(_manager),
         ),
       ]);
 

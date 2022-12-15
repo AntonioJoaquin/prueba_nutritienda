@@ -2,6 +2,7 @@ import 'package:injectable/injectable.dart';
 import 'package:prueba_nutritienda/view/src/pages/home/sales/sale_item.dart';
 
 import '../../../../core/src/common/custom_notifiers.dart';
+import 'rates/rate_item.dart';
 
 @injectable
 class HomeManager {
@@ -12,10 +13,23 @@ class HomeManager {
     SaleItem('Sales & Discounts (162)'),
   ];
 
+  final rateItems = <RateItem>[
+    RateItem('1'),
+    RateItem('2'),
+    RateItem('3'),
+    RateItem('4'),
+    RateItem('5'),
+  ];
+
   final CustomValueNotifier<int> _totalSaleItemsSelected =
       CustomValueNotifier(0);
   CustomValueNotifier<int> get totalSaleItemsSelected =>
       _totalSaleItemsSelected;
+
+  final CustomValueNotifier<int> _totalRateItemsSelected =
+      CustomValueNotifier(0);
+  CustomValueNotifier<int> get totalRateItemsSelected =>
+      _totalRateItemsSelected;
 
   // actions
   void changeSaleSelection(SaleItem item) {
@@ -26,7 +40,16 @@ class HomeManager {
         : _totalSaleItemsSelected.value--;
   }
 
+  void changeRateSelection(RateItem item) {
+    item.changeSelection();
+
+    item.isSelected.value
+        ? _totalRateItemsSelected.value++
+        : _totalRateItemsSelected.value--;
+  }
+
   void dispose() {
     _totalSaleItemsSelected.dispose();
+    _totalRateItemsSelected.dispose();
   }
 }
