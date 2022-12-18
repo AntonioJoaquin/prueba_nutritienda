@@ -8,6 +8,7 @@ import 'filter_option.dart';
 import 'home_manager.dart';
 import 'rates/rate_filter_list.dart';
 import 'sales/sale_filter_list.dart';
+import 'widgets/custom_bottom_sheet.dart';
 import 'widgets/filter_option_tile.dart';
 
 class HomePage extends StatefulWidget {
@@ -47,7 +48,7 @@ class _HomePageState extends State<HomePage> {
         ),
         FilterOption(
           'Color',
-          _manager.totalSaleItemsSelected,
+          _manager.totalColorItemsSelected,
           const SizedBox.shrink(),
         ),
         FilterOption(
@@ -68,6 +69,7 @@ class _HomePageState extends State<HomePage> {
       navigationBar: _buildNavigationBar(),
       child: SafeArea(
         child: Material(
+          color: Palette.white,
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Column(
@@ -99,6 +101,20 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void _show() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        // <-- SEE HERE
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(16.0),
+        ),
+      ),
+      builder: (_) => CustomBottomSheet(_manager),
+    );
+  }
+
   Widget _buildFilterOptionList() => ListView.separated(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
@@ -107,10 +123,11 @@ class _HomePageState extends State<HomePage> {
           builder: (_, int amount, __) => FilterOptionTile(
             title: _options[index].title,
             subtitle: amount > 0 ? '$amount selected' : null,
+            onExpand: () => _show(),
             expandedItem: _options[index].child,
           ),
         ),
-        separatorBuilder: (_, __) => const Divider(height: 8.0, thickness: 1.0),
+        separatorBuilder: (_, __) => const Divider(height: 1.0, thickness: 1.0),
         itemCount: _options.length,
       );
 

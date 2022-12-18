@@ -28,4 +28,14 @@ class NavigationService {
       }
     }
   }
+
+  Future pop() async {
+    try {
+      return _navigatorKey.currentState?.pop();
+    } on Exception catch (error) {
+      if (kDebugMode) {
+        print('Exception occurred in navigationTo: $error');
+      }
+    }
+  }
 }

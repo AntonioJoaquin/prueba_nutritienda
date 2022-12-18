@@ -18,6 +18,7 @@ abstract class View {
         expansionTileTheme: ExpansionTileThemeData(
           tilePadding: const EdgeInsets.fromLTRB(24.0, 4.0, 30.0, 4.0),
           iconColor: Palette.iconColor,
+          backgroundColor: Palette.white,
           collapsedIconColor: Palette.iconColor,
         ),
       );

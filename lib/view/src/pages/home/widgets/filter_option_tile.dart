@@ -8,12 +8,14 @@ class FilterOptionTile extends StatelessWidget {
     required this.title,
     this.subtitle,
     this.expandedItem,
+    this.onExpand,
     Key? key,
   }) : super(key: key);
 
   final String title;
   final String? subtitle;
   final Widget? expandedItem;
+  final Function? onExpand;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,7 @@ class FilterOptionTile extends StatelessWidget {
               ),
             )
           : null,
+      onExpansionChanged: (_) => onExpand?.call(),
       children: expandedItem != null ? [expandedItem!] : [],
     );
   }
