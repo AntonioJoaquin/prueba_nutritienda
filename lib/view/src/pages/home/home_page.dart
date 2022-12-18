@@ -50,6 +50,7 @@ class _HomePageState extends State<HomePage> {
           'Color',
           _manager.totalColorItemsSelected,
           const SizedBox.shrink(),
+          showBottomSheetOnExpand: _showColorBottomSheet,
         ),
         FilterOption(
           'Price',
@@ -101,7 +102,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _show() {
+  void _showColorBottomSheet() {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -118,15 +119,19 @@ class _HomePageState extends State<HomePage> {
   Widget _buildFilterOptionList() => ListView.separated(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemBuilder: (_, index) => ValueListenableBuilder(
-          valueListenable: _options[index].amount,
-          builder: (_, int amount, __) => FilterOptionTile(
-            title: _options[index].title,
-            subtitle: amount > 0 ? '$amount selected' : null,
-            onExpand: () => _show(),
-            expandedItem: _options[index].child,
-          ),
-        ),
+        itemBuilder: (_, index) {
+          final item = _options[index];
+
+          return ValueListenableBuilder(
+            valueListenable: _options[index].amount,
+            builder: (_, int amount, __) => FilterOptionTile(
+              title: item.title,
+              subtitle: amount > 0 ? '$amount selected' : null,
+              onExpand: item.showBottomSheetOnExpand,
+              expandedItem: item.child,
+            ),
+          );
+        },
         separatorBuilder: (_, __) => const Divider(height: 1.0, thickness: 1.0),
         itemCount: _options.length,
       );

@@ -6,6 +6,12 @@ class FilterOption {
   final String title;
   final CustomValueNotifier<int> amount;
   final Widget child;
+  final Function? showBottomSheetOnExpand;
 
-  FilterOption(this.title, this.amount, this.child);
+  FilterOption(
+    this.title,
+    this.amount,
+    this.child, {
+    this.showBottomSheetOnExpand,
+  });
 }

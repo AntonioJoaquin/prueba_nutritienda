@@ -20,6 +20,7 @@ class FilterOptionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
+      backgroundColor: Palette.white,
       title: Text(
         title,
         style: TextStyle(
@@ -34,6 +35,12 @@ class FilterOptionTile extends StatelessWidget {
               style: TextStyle(
                 color: Palette.subTitleTextColor,
               ),
+            )
+          : null,
+      trailing: (onExpand != null)
+          ? const Icon(
+              Icons.arrow_forward_ios_rounded,
+              size: 16.0,
             )
           : null,
       onExpansionChanged: (_) => onExpand?.call(),
