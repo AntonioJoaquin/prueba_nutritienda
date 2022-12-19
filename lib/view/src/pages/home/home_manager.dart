@@ -54,6 +54,12 @@ class HomeManager {
   CustomValueNotifier<int> get totalColorItemsSelected =>
       _totalColorItemsSelected;
 
+  final CustomValueNotifier<bool> _inStockState = CustomValueNotifier(false);
+  CustomValueNotifier<bool> get inStockState => _inStockState;
+
+  final CustomValueNotifier<bool> _saleState = CustomValueNotifier(false);
+  CustomValueNotifier<bool> get saleState => _saleState;
+
   // actions
   void changeSaleSelection(SaleItem item) {
     item.changeSelection();
@@ -87,6 +93,10 @@ class HomeManager {
     }
   }
 
+  void changeInStockState(bool value) => _inStockState.value = value;
+
+  void changeSaleState(bool value) => _saleState.value = value;
+
   // navigation
   void navigateBack() => _navigationService.pop();
 
@@ -94,5 +104,7 @@ class HomeManager {
     _totalSaleItemsSelected.dispose();
     _totalRateItemsSelected.dispose();
     _totalColorItemsSelected.dispose();
+    _inStockState.dispose();
+    saleState.dispose();
   }
 }

@@ -9,7 +9,7 @@ import 'home_manager.dart';
 import 'rates/rate_filter_list.dart';
 import 'sales/sale_filter_list.dart';
 import 'widgets/custom_bottom_sheet.dart';
-import 'widgets/filter_option_tile.dart';
+import 'widgets/filter_content.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -73,33 +73,7 @@ class _HomePageState extends State<HomePage> {
           color: Palette.white,
           child: Stack(
             children: [
-              SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const FilterOptionTile(
-                      title: 'Sort by',
-                      subtitle: 'Featured Items',
-                    ),
-                    const SizedBox(height: 28.0),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 24.0),
-                      child: Text(
-                        'Filter by',
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w700,
-                          color: Palette.titleTextColor,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 16.0),
-                    _buildFilterOptionList(),
-                    const SizedBox(height: 92.0),
-                  ],
-                ),
-              ),
+              FilterContent(_manager, options: _options),
               _buildShowButton(),
             ],
           ),
@@ -140,40 +114,6 @@ class _HomePageState extends State<HomePage> {
         ),
       );
 
-  void _showColorBottomSheet() {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        // <-- SEE HERE
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(16.0),
-        ),
-      ),
-      builder: (_) => CustomBottomSheet(_manager),
-    );
-  }
-
-  Widget _buildFilterOptionList() => ListView.separated(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemBuilder: (_, index) {
-          final item = _options[index];
-
-          return ValueListenableBuilder(
-            valueListenable: _options[index].amount,
-            builder: (_, int amount, __) => FilterOptionTile(
-              title: item.title,
-              subtitle: amount > 0 ? '$amount selected' : null,
-              onExpand: item.showBottomSheetOnExpand,
-              expandedItem: item.child,
-            ),
-          );
-        },
-        separatorBuilder: (_, __) => const Divider(height: 1.0, thickness: 1.0),
-        itemCount: _options.length,
-      );
-
   CupertinoNavigationBar _buildNavigationBar() => CupertinoNavigationBar(
         automaticallyImplyLeading: false,
         leading: Icon(
@@ -198,4 +138,19 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       );
+
+  // Functions
+  void _showColorBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        // <-- SEE HERE
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(16.0),
+        ),
+      ),
+      builder: (_) => CustomBottomSheet(_manager),
+    );
+  }
 }
