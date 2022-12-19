@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/media.dart';
 import '../../../common/palette.dart';
+import '../../../static_data.dart';
 import '../home_manager.dart';
 import 'color_item.dart';
 
@@ -17,10 +18,10 @@ class ColorFilterList extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: _manager.colorItems.length,
+      itemCount: StaticData.colorItems.length,
       itemBuilder: (BuildContext context, int index) => _FilterColorItem(
         _manager,
-        item: _manager.colorItems[index],
+        item: StaticData.colorItems[index],
       ),
     );
   }

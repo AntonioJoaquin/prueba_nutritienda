@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/media.dart';
 import '../../../common/palette.dart';
+import '../../../static_data.dart';
 import '../home_manager.dart';
 import 'sale_item.dart';
 
@@ -19,10 +20,10 @@ class SaleFilterList extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: _manager.saleItems.length,
+      itemCount: StaticData.saleItems.length,
       itemBuilder: (_, index) => _FilterSaleItem(
         _manager,
-        item: _manager.saleItems[index],
+        item: StaticData.saleItems[index],
       ),
     );
   }

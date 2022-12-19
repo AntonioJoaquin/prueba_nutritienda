@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/media.dart';
 import '../../../common/palette.dart';
+import '../../../static_data.dart';
 import '../home_manager.dart';
 
 class RateFilterList extends StatelessWidget {
@@ -16,7 +17,7 @@ class RateFilterList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      children: _manager.rateItems
+      children: StaticData.rateItems
           .map(
             (e) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 4.0),
