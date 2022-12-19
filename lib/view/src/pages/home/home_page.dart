@@ -129,12 +129,15 @@ class _HomePageState extends State<HomePage> {
             color: Palette.appBarTextColor,
           ),
         ),
-        trailing: Text(
-          'Reset',
-          style: TextStyle(
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w500,
-            color: Palette.primaryColor,
+        trailing: GestureDetector(
+          onTap: _manager.resetAll,
+          child: Text(
+            'Reset',
+            style: TextStyle(
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w500,
+              color: Palette.primaryColor,
+            ),
           ),
         ),
       );

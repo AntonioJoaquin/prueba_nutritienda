@@ -69,12 +69,28 @@ class HomeManager {
         : _totalSaleItemsSelected.value--;
   }
 
+  void _resetSaleSelection() {
+    for (SaleItem saleItem in saleItems) {
+      if (saleItem.isSelected.value) {
+        changeSaleSelection(saleItem);
+      }
+    }
+  }
+
   void changeRateSelection(RateItem item) {
     item.changeSelection();
 
     item.isSelected.value
         ? _totalRateItemsSelected.value++
         : _totalRateItemsSelected.value--;
+  }
+
+  void _resetRateSelection() {
+    for (RateItem rateItem in rateItems) {
+      if (rateItem.isSelected.value) {
+        changeRateSelection(rateItem);
+      }
+    }
   }
 
   void changeColorSelection(ColorItem item) {
@@ -96,6 +112,14 @@ class HomeManager {
   void changeInStockState(bool value) => _inStockState.value = value;
 
   void changeSaleState(bool value) => _saleState.value = value;
+
+  void resetAll() {
+    _resetSaleSelection();
+    _resetRateSelection();
+    resetColorSelection();
+    _inStockState.value = false;
+    _saleState.value = false;
+  }
 
   // navigation
   void navigateBack() => _navigationService.pop();
