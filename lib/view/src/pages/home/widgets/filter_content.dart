@@ -39,7 +39,7 @@ class FilterContent extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16.0),
-          _buildFilterOptionList(),
+          _buildListenableFilterOptionItem(),
           const Divider(height: 1.0, thickness: 1.0),
           SwitchableFilterOption(
             title: 'In stock',
@@ -58,24 +58,30 @@ class FilterContent extends StatelessWidget {
     );
   }
 
-  Widget _buildFilterOptionList() => ListView.separated(
+  Widget _buildListenableFilterOptionItem() => ListView.separated(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         itemBuilder: (_, index) {
           final item = options[index];
 
-          return ValueListenableBuilder(
-            valueListenable: options[index].amount,
-            builder: (_, int amount, __) => FilterOptionTile(
-              title: item.title,
-              subtitle: amount > 0 ? '$amount selected' : null,
-              onExpand: item.showBottomSheetOnExpand,
-              expandedItem: item.child,
-            ),
-          );
+          return (item.amount != null)
+              ? ValueListenableBuilder(
+                  valueListenable: item.amount!,
+                  builder: (_, int amount, __) =>
+                      _buildFilterOptionItem(item, amount),
+                )
+              : _buildFilterOptionItem(item);
         },
         separatorBuilder: (_, __) => const Divider(height: 1.0, thickness: 1.0),
         itemCount: options.length,
+      );
+
+  Widget _buildFilterOptionItem(FilterOption item, [int amount = 0]) =>
+      FilterOptionTile(
+        title: item.title,
+        subtitle: amount > 0 ? '$amount selected' : null,
+        onExpand: item.showBottomSheetOnExpand,
+        expandedItem: item.child,
       );
 }
 

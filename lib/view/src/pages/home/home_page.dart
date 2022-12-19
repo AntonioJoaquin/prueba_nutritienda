@@ -33,34 +33,33 @@ class _HomePageState extends State<HomePage> {
   void _initFilterOptions() => _options.addAll([
         FilterOption(
           'Sales & Offers',
-          _manager.totalSaleItemsSelected,
           SaleFilterList(_manager),
+          amount: _manager.totalSaleItemsSelected,
         ),
         FilterOption(
           'Size',
-          _manager.totalSaleItemsSelected,
           const SizedBox.shrink(),
         ),
         FilterOption(
           'Brand',
-          _manager.totalSaleItemsSelected,
           const SizedBox.shrink(),
+          showBottomSheetOnExpand: () {},
         ),
         FilterOption(
           'Color',
-          _manager.totalColorItemsSelected,
           const SizedBox.shrink(),
+          amount: _manager.totalColorItemsSelected,
           showBottomSheetOnExpand: _showColorBottomSheet,
         ),
         FilterOption(
           'Price',
-          _manager.totalSaleItemsSelected,
           const SizedBox.shrink(),
+          showBottomSheetOnExpand: () {},
         ),
         FilterOption(
           'Rating',
-          _manager.totalRateItemsSelected,
           RateFilterList(_manager),
+          amount: _manager.totalRateItemsSelected,
         ),
       ]);
 
