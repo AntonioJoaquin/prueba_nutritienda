@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
               BoxShadow(
                 spreadRadius: 3.0,
                 blurRadius: 1.0,
-                color: Colors.grey.withOpacity(.5),
+                color: Palette.shadowColor,
               )
             ],
           ),

@@ -1,7 +1,8 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 abstract class Palette {
   static Color white = const Color(0xFFFFFFFF);
+  static Color grey = Colors.grey;
 
   static Color primaryColor = const Color(0xFFEB4C8F);
 
@@ -12,6 +13,8 @@ abstract class Palette {
 
   static Color dividerColor = const Color(0xFFF2F4F5);
   static Color iconColor = const Color(0xFF0E0F0F);
+
+  static Color shadowColor = Colors.grey.withOpacity(.5);
 
   static Color colorFilter1 = const Color(0xFFEB91BC);
   static Color colorFilter2 = const Color(0xFF5480F1);

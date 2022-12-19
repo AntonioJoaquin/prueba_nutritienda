@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/media.dart';
+import '../../../common/palette.dart';
 import '../home_manager.dart';
 import 'color_item.dart';
 
@@ -79,8 +80,8 @@ class _FilterColorItem extends StatelessWidget {
             width: 24.0,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4.0),
-              border: isSelected ? null : Border.all(color: Colors.grey),
-              color: isSelected ? Colors.pink : null,
+              border: isSelected ? null : Border.all(color: Palette.grey),
+              color: isSelected ? Palette.primaryColor : null,
             ),
             child: Visibility(
               visible: isSelected,

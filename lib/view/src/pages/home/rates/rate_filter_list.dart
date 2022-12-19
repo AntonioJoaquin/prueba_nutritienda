@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/media.dart';
+import '../../../common/palette.dart';
 import '../home_manager.dart';
 
 class RateFilterList extends StatelessWidget {
@@ -28,7 +29,7 @@ class RateFilterList extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4.0),
                       border: Border.all(
-                        color: isSelected ? Colors.pink : Colors.grey,
+                        color: isSelected ? Palette.primaryColor : Palette.grey,
                       ),
                     ),
                     child: Row(
