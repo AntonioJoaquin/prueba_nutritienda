@@ -1,16 +1,7 @@
-# prueba_nutritienda
+# Prueba Nutritienda
 
-A new Flutter project.
+He realizado la maquetación de la pantalla requerida para la prueba. Sin embargo, no la he realizado al completo dado que todas las opciones de filtrado acaban repitiéndose. Por lo tanto, tan solo he maquetado las siguientes opciones: **Sale & offers**, **Rate**, y **Color**.
 
-## Getting Started
+He tratado de dejar todo refactorizado.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Al abrir el proyecto es necesario ejecutar el comando ```flutter pub get``` para descargar los paquetes utilizados.
