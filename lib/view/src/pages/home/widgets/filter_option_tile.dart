@@ -25,7 +25,7 @@ class FilterOptionTile extends StatelessWidget {
         title,
         style: TextStyle(
           fontSize: 16.sp,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w600,
           color: Palette.titleTextColor,
         ),
       ),

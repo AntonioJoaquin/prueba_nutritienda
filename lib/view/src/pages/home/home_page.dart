@@ -71,36 +71,74 @@ class _HomePageState extends State<HomePage> {
       child: SafeArea(
         child: Material(
           color: Palette.white,
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const FilterOptionTile(
-                  title: 'Sort by',
-                  subtitle: 'Featured Items',
-                ),
-                const SizedBox(height: 28.0),
-                Padding(
-                  padding: const EdgeInsets.only(left: 24.0),
-                  child: Text(
-                    'Filter by',
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w700,
-                      color: Palette.titleTextColor,
+          child: Stack(
+            children: [
+              SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const FilterOptionTile(
+                      title: 'Sort by',
+                      subtitle: 'Featured Items',
                     ),
-                  ),
+                    const SizedBox(height: 28.0),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 24.0),
+                      child: Text(
+                        'Filter by',
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w700,
+                          color: Palette.titleTextColor,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 16.0),
+                    _buildFilterOptionList(),
+                    const SizedBox(height: 92.0),
+                  ],
                 ),
-                const SizedBox(height: 16.0),
-                _buildFilterOptionList(),
-              ],
-            ),
+              ),
+              _buildShowButton(),
+            ],
           ),
         ),
       ),
     );
   }
+
+  Widget _buildShowButton() => Align(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(
+            vertical: 15.0,
+            horizontal: 24.0,
+          ),
+          decoration: BoxDecoration(
+            color: Palette.white,
+            boxShadow: [
+              BoxShadow(
+                spreadRadius: 3.0,
+                blurRadius: 1.0,
+                color: Colors.grey.withOpacity(.5),
+              )
+            ],
+          ),
+          child: CupertinoButton(
+            color: Palette.primaryColor,
+            onPressed: () {},
+            child: Text(
+              'Show (32 results)',
+              style: TextStyle(
+                fontSize: 16.0.sp,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ),
+      );
 
   void _showColorBottomSheet() {
     showModalBottomSheet(
